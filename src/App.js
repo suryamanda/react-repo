@@ -7,7 +7,9 @@ render(){
  return (
       <div className="App">
       <h1>Hi, I'm a react app</h1>
-      <Person />
+      <Person person="Max" age = "28"/>
+      <Person person="Manu" age = "30"/>
+      <Person person="Stefan" age = "27"> My Hobbies : Racing</Person>
     </div>
  );
 }
