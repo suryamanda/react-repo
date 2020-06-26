@@ -10,7 +10,8 @@ class App extends Component {
       { name : 'Manu', age : 29},
       { name : 'Stefan', age : 26},
     ],
-    otherState : 'Other value'
+    otherState : 'Other value',
+    showPersons : false
   }
 
 
@@ -28,8 +29,17 @@ class App extends Component {
     this.setState({persons : [
       { name : 'Max', age : 28},
       { name : 'Manu', age : 29},
-      { name : event.target.value, age : 26},
+      { name : event.target.value, age : 26}
     ] });
+  }
+
+  toggleShowPersons = () => {
+    console.log(this.state);
+    this.setState({
+      showPersons: !this.state.showPersons
+    }
+    );
+    console.log(this.state);
   }
 
 //we can pass method references as params
@@ -48,7 +58,9 @@ render(){
       <h1>Hi, I'm a react app</h1>
       <button 
       style={style}
-      onClick = { () => this.switchNameHandler('Surya')}>Switch Name</button>
+      onClick = {this.toggleShowPersons}>Toggle Persons</button>
+      { this.state.showPersons ? 
+      <div>
       <Person
        name={this.state.persons[0].name}
        age = {this.state.persons[0].age}/>
@@ -61,6 +73,8 @@ render(){
       click = {this.switchNameHandler.bind(this, 'Maximillian')}
       changed = {this.nameChangedHandler}
       />
+      </div> : null
+      }
     </div>
  );
 }
