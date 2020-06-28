@@ -1,21 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/Person';
-import styled from 'styled-components';
-
-const StyledButton = styled.button`
-    background-color : ${props => props.alt ? 'red' : 'green'};
-    color : white;
-    font : inherit;
-    border: 1px solid blue;
-    padding : 8px;
-    cursor : pointer;
-
-    &:hover {
-      background-color : ${props => props.alt ? 'yellow' : 'lightgreen'};
-      color : black;
-  }; 
-`
 
 class App extends Component {
 
@@ -85,6 +70,8 @@ render(){
       changed = {(event) => this.nameChangedHandler(event, person.id)}
       />
     }
+
+
       )};
       </div>
     );
@@ -107,8 +94,8 @@ render(){
       <div className="App">
       <h1>Hi, I'm a react app</h1>
       <p className = {classes.join(' ')}>This is Really working!</p>
-      <StyledButton alt = {this.state.showPersons}
-      onClick = {this.toggleShowPersons}>Toggle Persons</StyledButton>
+      <button className = "button"
+      onClick = {this.toggleShowPersons}>Toggle Persons</button>
       {persons}
     </div>
     
