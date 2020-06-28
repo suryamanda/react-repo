@@ -4,7 +4,7 @@ import Person from './Person/Person';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-    background-color : green;
+    background-color : ${props => props.alt ? 'red' : 'green'};
     color : white;
     font : inherit;
     border: 1px solid blue;
@@ -12,7 +12,7 @@ const StyledButton = styled.button`
     cursor : pointer;
 
     &:hover {
-      background-color : lightgreen;
+      background-color : ${props => props.alt ? 'yellow' : 'lightgreen'};
       color : black;
   }; 
 `
@@ -107,7 +107,7 @@ render(){
       <div className="App">
       <h1>Hi, I'm a react app</h1>
       <p className = {classes.join(' ')}>This is Really working!</p>
-      <StyledButton
+      <StyledButton alt = {this.state.showPersons}
       onClick = {this.toggleShowPersons}>Toggle Persons</StyledButton>
       {persons}
     </div>
