@@ -1,7 +1,21 @@
 import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/Person';
+import styled from 'styled-components';
 
+const StyledButton = styled.button`
+    background-color : green;
+    color : white;
+    font : inherit;
+    border: 1px solid blue;
+    padding : 8px;
+    cursor : pointer;
+
+    &:hover {
+      background-color : lightgreen;
+      color : black;
+  }; 
+`
 
 class App extends Component {
 
@@ -17,7 +31,7 @@ class App extends Component {
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
-      return p.id == id;
+      return p.id === id;
     });
 
     const person = {
@@ -55,18 +69,6 @@ class App extends Component {
 //we can pass method references as params
 render(){
 
-  const style = {
-    backgroundColor : 'green',
-    color : 'white',
-    font : 'inherit',
-    border: '1px solid blue',
-    padding : '8px',
-    cursor : 'pointer',
-    ':hover' : {
-      backgroundColor : 'lightgreen',
-      color : 'black'
-    }
-  };
 
   let persons = null;
 
@@ -87,12 +89,7 @@ render(){
       </div>
     );
 
-    style.backgroundColor = 'red';
-    style[':hover'] = {
-          backgroundColor : 'salmon',
-          color: 'black'
-    };
-
+    
   }
 
    const classes = [];
@@ -110,9 +107,8 @@ render(){
       <div className="App">
       <h1>Hi, I'm a react app</h1>
       <p className = {classes.join(' ')}>This is Really working!</p>
-      <button 
-      style={style}
-      onClick = {this.toggleShowPersons}>Toggle Persons</button>
+      <StyledButton
+      onClick = {this.toggleShowPersons}>Toggle Persons</StyledButton>
       {persons}
     </div>
     
