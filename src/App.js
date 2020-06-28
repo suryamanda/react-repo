@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import classes from './App.module.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -23,8 +23,6 @@ class App extends Component {
       ...this.state.persons[personIndex]
     };
 
-  //const person = Object.assign({}, this.state.persons[personIndex]);
-
   person.name = event.target.value;
 
   const persons = [...this.state.persons];
@@ -35,8 +33,6 @@ class App extends Component {
   }
 
   deletePersonHandler = (index) => {
-    //const persons = this.state.persons.slice();
-    //this is the best way to immutability
     const persons = [...this.state.persons];
     persons.splice(index, 1);
     this.setState({persons : persons});
@@ -51,7 +47,6 @@ class App extends Component {
     console.log(this.state);
   }
 
-//we can pass method references as params
 render(){
 
 
@@ -70,31 +65,27 @@ render(){
       changed = {(event) => this.nameChangedHandler(event, person.id)}
       />
     }
-
-
       )};
       </div>
     );
-
-    
   }
 
-   const classes = [];
+   const assignedClasses = [];
    if(this.state.persons.length <= 2){
-      classes.push('red');
+    assignedClasses.push(classes.red);
    }
    if(this.state.persons.length <= 1){
-     classes.push('bold');
+    assignedClasses.push(classes.bold);
 
    }
 
 
  return (
    
-      <div className="App">
+      <div className={classes.App}>
       <h1>Hi, I'm a react app</h1>
-      <p className = {classes.join(' ')}>This is Really working!</p>
-      <button className = "button"
+      <p className = {assignedClasses.join(' ')}>This is Really working!</p>
+      <button className = {classes.button}
       onClick = {this.toggleShowPersons}>Toggle Persons</button>
       {persons}
     </div>
